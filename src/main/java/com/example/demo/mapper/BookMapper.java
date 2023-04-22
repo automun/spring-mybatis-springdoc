@@ -1,6 +1,6 @@
-package com.example.demo.mybatis.mapper;
+package com.example.demo.mapper;
 
-import com.example.demo.mybatis.entity.Book;
+import com.example.demo.entity.Book;
 import org.apache.ibatis.annotations.*;
 import java.util.List;
 

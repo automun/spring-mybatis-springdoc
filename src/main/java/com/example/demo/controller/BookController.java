@@ -1,19 +1,19 @@
 package com.example.demo.controller;
 
-import com.example.demo.mybatis.mapper.BookMapper;
+import com.example.demo.exception.missingException;
+import com.example.demo.mapper.BookMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.mybatis.entity.Book;
+import com.example.demo.entity.Book;
 import com.example.demo.exception.myNotFoundException;
 
 @RestController
 @Tag(name = "图书管理控制制器")
+@RequestMapping("/book-app")
 public class BookController {
     @Resource
     BookMapper bookMapper;
@@ -35,6 +35,8 @@ public class BookController {
     public Book addBook(@RequestBody Book book)
     {
         Book newBook = book;
+        if (book.getBookName() == null || book.getNum() == 0 || book.getAuthor() == null)
+            throw new missingException();
         bookMapper.insert(newBook);
         return newBook;
     }

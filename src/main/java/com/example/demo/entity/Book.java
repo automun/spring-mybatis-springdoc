@@ -1,4 +1,4 @@
-package com.example.demo.mybatis.entity;
+package com.example.demo.entity;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
